@@ -1,6 +1,7 @@
 import Header from "./components/Header"
 import InputGroup from "./components/InputGroup"
 import { useState } from "react"
+import ResultsTable from "./components/ResultsTable"
 
 function App() {
   let [investmentData, setInvestmentData] = useState({   
@@ -29,6 +30,7 @@ function App() {
     <>
       <Header />
       <InputGroup investmentDataHandler={handleInvestmentDataChange}/>
+      <ResultsTable investmentData={investmentData}/>
     </>
   )
 }
