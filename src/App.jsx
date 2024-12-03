@@ -16,9 +16,6 @@ function App() {
     name = name.toLowerCase().replace(" ", "")*/
     let value = parseFloat(event.target.value)  //converte o valor para float
     setInvestmentData(prevData => {  //atualiza o estado do objeto investmentData
-      if(!value){   //se o valor for vazio, o valor é 0
-        value = 0
-      }
       return {      //retorna o objeto com o valor atualizado a partir do valor anterior
         ...prevData,
         [name]: value
@@ -30,7 +27,10 @@ function App() {
     <>
       <Header />
       <InputGroup investmentDataHandler={handleInvestmentDataChange} data={investmentData}/>
-      <ResultsTable investmentData={investmentData}/>
+      {(investmentData.duration >= 1 && Number.isInteger(investmentData.duration))
+       ? <ResultsTable investmentData={investmentData}/> 
+       : <h2 className="center">Duration must be a positive integer</h2>
+      }
     </>
   )
 }
