@@ -1,25 +1,15 @@
+import Input from "./Input";
+
 export default function InputGroup() {
     return (
         <div id="user-input">
             <div className="input-group">
-                <div>
-                    <label> INITIAL INVESTMENT</label>
-                    <input type="number" />
-                </div>
-                <div>
-                    <label>ANUAL INVESTMENT</label>
-                    <input type="number" />
-                </div>
+                <Input labelName="INITIAL INVESTMENT" />
+                <Input labelName="ANNUAL INVESTMENT" />
             </div>
             <div className="input-group">
-                <div>
-                    <label>EXPECTED RETURN</label>
-                    <input type="number" />
-                </div>
-                <div>
-                    <label>DURATION {"(IN YEARS)"}</label>
-                    <input type="number" />
-                </div>
+                <Input labelName="EXPECTED RETURN" />
+                <Input labelName="DURATION" />
             </div>
         </div>
     )
