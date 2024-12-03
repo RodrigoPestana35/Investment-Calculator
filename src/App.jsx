@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <Header />
-      <InputGroup investmentDataHandler={handleInvestmentDataChange}/>
+      <InputGroup investmentDataHandler={handleInvestmentDataChange} data={investmentData}/>
       <ResultsTable investmentData={investmentData}/>
     </>
   )
