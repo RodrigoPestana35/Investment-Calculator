@@ -3,22 +3,24 @@ import InputGroup from "./components/InputGroup"
 import { useState } from "react"
 
 function App() {
-  let [investmentData, setInvestmentData] = useState({
+  let [investmentData, setInvestmentData] = useState({   
     initialInvestment: 0,
     annualInvestment: 0,
     expectedReturn: 0,
     duration: 0,
   })
 
-  function handleInvestmentDataChange(event) {
-    //podia passsar o name como parametro da funcao e nao precisaria fazer essas manipulacoes
-    let name = event.target.name
-    name = name.toLowerCase().replace(" ", "")
+  function handleInvestmentDataChange(event, name) {
+    /*let name = event.target.name  podia fazer desta forma, mas a logica não esta correta
+    name = name.toLowerCase().replace(" ", "")*/
     let value = event.target.value
-    setInvestmentData(() => {
-      return {
-        ...investmentData,
-        [name]: value,
+    setInvestmentData(prevData => {  //atualiza o estado do objeto investmentData
+      if(!value){   //se o valor for vazio, o valor é 0
+        value = 0
+      }
+      return {      //retorna o objeto com o valor atualizado a partir do valor anterior
+        ...prevData,
+        [name]: value
       }
     })
   }
@@ -26,7 +28,7 @@ function App() {
   return (
     <>
       <Header />
-      <InputGroup />
+      <InputGroup investmentDataHandler={handleInvestmentDataChange}/>
     </>
   )
 }
